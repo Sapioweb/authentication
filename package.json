@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/Sapioweb/authentication#readme",
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   }
 }
