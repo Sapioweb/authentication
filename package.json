@@ -1,0 +1,35 @@
+{
+  "name": "@sapioweb/authentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.3",
+    "@types/jsonwebtoken": "^8.3.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sapioweb/authentication.git"
+  },
+  "author": "Andreas Beasley <andreas@sapioweb.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sapioweb/authentication/issues"
+  },
+  "homepage": "https://github.com/Sapioweb/authentication#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}
