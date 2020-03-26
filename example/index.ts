@@ -10,7 +10,7 @@ config();
 
 app.use(json());
 
-connect('mongodb+srv://sapiobeasley:2wsxzaq1@cluster0-4ppdq.mongodb.net/test?retryWrites=true&w=majority', {
+connect(<string>process.env.CONNECTION_STRING, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('DB Connected'))

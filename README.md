@@ -4,21 +4,32 @@
 
 index.ts
 ```typescript
-const app = express();
+config();
 
-app.use(json()); // Include body parser
+app.use(json());
 
-// Conntect DB 
-connect('mongodb+srv://sapiobeasley:2wsxzaq1@cluster0-4ppdq.mongodb.net/test?retryWrites=true&w=majority', {
+connect(<string>process.env.CONNECTION_STRING, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('DB Connected'))
   .catch(() => console.log('Error connecting DB'));
 
-
 app.use('', router);
 
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  if (res.headersSent) {
+    return next(err)
+  }
+
+  return res.json({
+    success: false,
+    message: err.message,
+    payload: req.body
+  })
+});
+
 app.listen(3000, () => console.log('http://localhost:3000'));
+
 ```
 
 router.ts
