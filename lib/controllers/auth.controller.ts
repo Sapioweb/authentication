@@ -1,31 +1,33 @@
 import { NextFunction, Request, Response } from "express";
-// import { User } from '../models/user.model';
-
-// const JSON_SECRET = 'beasleybeasley';
+import { User } from '../models';
+import { sign } from "jsonwebtoken";
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log(req.body)
-    const {email = undefined, password = undefined} = req.body || {};
+    if (!process.env.JWT_SECRET) {
+      return next(new Error('JWT_SECRET environment variable missing'));
+    }
 
-    // const user = await User.findOne({ email });
+    const {email, password} = req.body || {};
 
-    // if (!user) {
-    //   return next(new Error('Invalid login'));
-    // }
+    const user = await User.findOne({email});
 
-    // const passwordMatch = user.comparePassword(password, user.password);
+    if (!user || !password) {
+      return next(new Error('Invalid login'));
+    }
 
-    // if (!passwordMatch) {
-    //   return next(new Error('Incorrect password'));
-    // }
+    const passwordMatch = user.comparePassword(password, user.password);
 
-    // const token = sign(user.toJSON(), JSON_SECRET);
+    if (!passwordMatch) {
+      return next(new Error('Incorrect password'));
+    }
+
+    const token = sign(user.toJSON(), process.env.JWT_SECRET);
 
     return res.json({
       success: true,
-      // token,
-      // user
+      token,
+      user
     });
   } catch (e) {
     return next(e);
@@ -34,19 +36,22 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const {email = undefined, password = undefined} = req.body;
+    const {email, password} = req.body || {};
 
-    // Create user
-    // const user = new User({
-    //   email,
-    //   password
-    // });
+    if (!email || !password) {
+      return next(new Error('Email and Password are required'));
+    }
 
-    // await user.save();
+    const user = new User({
+      email,
+      password
+    });
+
+    await user.save();
 
     return res.json({
       success: true,
-      // user
+      user
     });
   } catch (e) {
     return next(e);

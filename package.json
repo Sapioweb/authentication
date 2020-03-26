@@ -8,15 +8,20 @@
     "lib": "lib"
   },
   "dependencies": {
+    "bcrypt": "^4.0.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/express": "^4.17.3",
     "@types/jest": "^25.1.4",
     "@types/jsonwebtoken": "^8.3.8",
-    "jest": "^25.1.0"
+    "@types/mongoose": "^5.7.7",
+    "jest": "^25.1.0",
+    "mongoose": "^5.9.6"
   },
   "scripts": {
     "test": "jest"
