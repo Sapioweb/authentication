@@ -65,7 +65,7 @@ router.post('/register', register);
 export { router }
 ```
 
-Following objcet displays the only allowed keys in order for requests to work.
+Following object displays the only allowed keys in order for requests to work.
 ```typescript
 interface IUser {
   email: string;

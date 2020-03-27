@@ -5,6 +5,7 @@ import { validateEmail } from "../common/validateEmail";
 import { validatePassword } from "../common/validatePassword";
 import { uniqueEmail } from "../common/uniqueEmail";
 
+// @ts-ignore
 const UserSchema = new Schema({
   email: {
     type: String,
