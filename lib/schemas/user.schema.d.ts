@@ -1,3 +1,2 @@
-import { Schema } from "mongoose";
-declare const UserSchema: Schema<any>;
+declare const UserSchema: any;
 export { UserSchema };

@@ -22,6 +22,8 @@ Must be eight characters or longer.
 ```
 
 ### Setup
+Wherever you may be including you environment variables, you will need to add `JWT_SECRET` with any random value you prefer.
+
 First things first, be sure you have a connection to mongoDB already established as well as body parser to handle incoming json payloads. All other configuations you may think of are to your liking.
 ```typescript
 config();
