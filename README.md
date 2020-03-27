@@ -1,8 +1,28 @@
 ## Installation
 
-`npm i @sapioweb/authentication`
+`npm i @sapioweb/authentication --save`
 
-index.ts
+Basic authentication for a very simple use of logging in and registering users with their email and password. Currently there is no expansion of schemas but there are a few required validation checks baked in which are listed below.  
+
+validateEmail()
+```text
+Must be an email format
+```
+uniqueEmail()
+```text
+Email will be required to be unique
+```
+validatePassword()
+ ```
+Must contain at least 1 lowercase alphabetical character.
+Must contain at least 1 uppercase alphabetical character.
+Must contain at least 1 numeric character.
+Must contain at least one special character, but we are escaping reserved RegEx characters to avoid conflict.
+Must be eight characters or longer.
+```
+
+### Setup
+First things first, be sure you have a connection to mongoDB already established as well as body parser to handle incoming json payloads. All other configuations you may think of are to your liking.
 ```typescript
 config();
 
@@ -32,7 +52,7 @@ app.listen(3000, () => console.log('http://localhost:3000'));
 
 ```
 
-router.ts
+You may name your routes however you may please, however be mindful of the usage of the two authentication methods for logging in and registering.
 ```typescript
 const router = Router();
 
@@ -43,7 +63,7 @@ router.post('/register', register);
 export { router }
 ```
 
-Register and Login Object
+Following objcet displays the only allowed keys in order for requests to work.
 ```typescript
 interface IUser {
   email: string;
