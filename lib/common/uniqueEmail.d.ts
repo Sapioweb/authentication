@@ -1,1 +1,1 @@
-export declare const uniqueEmail: (email: string) => any;
+export declare const uniqueEmail: (email: string) => Promise<boolean>;
